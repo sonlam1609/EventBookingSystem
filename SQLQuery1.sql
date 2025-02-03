@@ -1,0 +1,33 @@
+﻿CREATE DATABASE EventBookingSystem;
+GO
+
+USE EventBookingSystem;
+GO
+
+CREATE TABLE Events (
+    Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    Name NVARCHAR(100) NOT NULL,
+    Description NVARCHAR(500),
+    Date DATETIME NOT NULL,
+    Location NVARCHAR(200) NOT NULL
+);
+
+CREATE TABLE Users (
+    Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    Username NVARCHAR(50) NOT NULL,
+    PasswordHash NVARCHAR(200) NOT NULL
+);
+
+CREATE TABLE Bookings (
+    Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    EventId UNIQUEIDENTIFIER NOT NULL,
+    UserId UNIQUEIDENTIFIER NOT NULL,
+    BookingDate DATETIME NOT NULL,
+    PaymentStatus NVARCHAR(50) NOT NULL,
+    FOREIGN KEY (EventId) REFERENCES Events(Id),
+    FOREIGN KEY (UserId) REFERENCES Users(Id)
+);
+
+select * from Users;
+select * from Events;
+select * from Bookings;
