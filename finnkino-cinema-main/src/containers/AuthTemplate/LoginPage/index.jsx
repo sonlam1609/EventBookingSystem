@@ -42,7 +42,7 @@ const LoginPage = () => {
   const { control, handleSubmit } = useForm({
     reValidateMode: "onSubmit",
     defaultValues: { username: "", password: "" },
-    resolver: yupResolver(loginSchema),
+    // resolver: yupResolver(loginSchema),
   });
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
