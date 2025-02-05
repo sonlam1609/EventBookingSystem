@@ -13,6 +13,7 @@ import CinemaGroup from "./CinemaGroup";
 import Loader from "@/components/Loader";
 
 import "./style.scss";
+import { cinemaApi } from "@/api";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

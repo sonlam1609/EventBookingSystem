@@ -20,7 +20,7 @@ import "./style.scss";
 
 function MovieDetailsPage() {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.movieDetails);
+  const data = useSelector((state) => state.movieDetails.data);
   const loading = useSelector((state) => state.movieDetails.loading);
 
   const movieID = useParams();

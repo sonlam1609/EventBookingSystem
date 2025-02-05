@@ -25,17 +25,17 @@ const ClientRoutes = {
     {
       path: "ticket-booking/:scheduleId",
       element: (
-        <RequireAuth roles={[ROLE.ADMIN, ROLE.CLIENT]}>
-          <TicketBookingPage />
-        </RequireAuth>
+        // <RequireAuth roles={[ROLE.ADMIN, ROLE.CLIENT]}>
+        <TicketBookingPage />
+        // </RequireAuth>
       ),
     },
     {
       path: "profile",
       element: (
-        <RequireAuth roles={[ROLE.ADMIN, ROLE.CLIENT]}>
-          <ProfilePage />
-        </RequireAuth>
+        // <RequireAuth roles={[ROLE.ADMIN, ROLE.CLIENT]}>
+        <ProfilePage />
+        // </RequireAuth>
       ),
     },
   ],

@@ -34,7 +34,7 @@ function Carousel() {
   const loading = useSelector((state) => state.movieBanner.loading);
 
   useEffect(() => {
-    dispatch(actFetchBanners());
+    // dispatch(actFetchBanners());
   }, []);
 
   const settings = {
