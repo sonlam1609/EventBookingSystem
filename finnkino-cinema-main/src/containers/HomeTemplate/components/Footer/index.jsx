@@ -30,20 +30,6 @@ function Footer() {
         id="footer__container"
         className="container"
       >
-        <Grid container sx={{ mx: "auto" }} className="footer__apps">
-          <a
-            className="footer__app-item"
-            href="https://apps.apple.com/app/finnkino-leffa/id1616672209?l"
-          >
-            <Image src="https://media.finnkino.fi/Files/responsive/footer/appstore_small.png" />
-          </a>
-          <a
-            className="footer__app-item"
-            href="https://media.finnkino.fi/Files/responsive/footer/googleplay_small.png"
-          >
-            <Image src="https://media.finnkino.fi/Files/responsive/footer/googleplay_small.png" />
-          </a>
-        </Grid>
         <Grid container className="footer__list">
           <Grid item xs={12} md={3} className="footer__list-item">
             <p className="footer__list-title">Finnkino</p>
@@ -108,10 +94,6 @@ function Footer() {
               <FontAwesomeIcon icon={faYoutube} />
             </a>
           </Grid>
-        </Grid>
-        <Grid container className="footer__payment">
-          <Image src={images.paymentMethodsMobile} className="hide-on-pc hide-on-tablet" />
-          <Image src={images.paymentMethodsPC} className="hide-on-mobile" />
         </Grid>
         <p className="footer__rights pt-5 pb-5">Finnkino Oy - All rights reserved</p>
       </Grid>

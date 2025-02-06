@@ -31,11 +31,14 @@ function MovieList() {
   let movieTypeList;
 
   const handleMovieType = () => {
-    if (movieType === "now") {
-      return (movieTypeList = movieList?.filter((movie) => movie.dangChieu));
-    } else if (movieType === "soon") {
-      return (movieTypeList = movieList?.filter((movie) => movie.sapChieu));
-    }
+    console.log("*****", movieList);
+    return movieList;
+
+    // if (movieType === "now") {
+    //   return (movieTypeList = movieList?.filter((movie) => movie.dangChieu));
+    // } else if (movieType === "soon") {
+    //   return (movieTypeList = movieList?.filter((movie) => movie.sapChieu));
+    // }
   };
 
   return (
@@ -63,19 +66,19 @@ function MovieList() {
             <Loader />
           ) : (
             <MultipleItems
-              dots={false}
+              dots={true}
               autoplay={false}
               className="movie-list__carousel"
               data={handleMovieType()}
               Component="Image"
-              slidesToShow={8.2}
-              slidesToScroll={8}
+              slidesToShow={3}
+              slidesToScroll={1}
               nextArrow={<FontAwesomeIcon icon={faAngleRight} />}
               prevArrow={<FontAwesomeIcon icon={faAngleLeft} />}
             />
           )}
 
-          <Container maxWidth="lg" sx={{ mx: "auto" }}>
+          {/* <Container maxWidth="lg" sx={{ mx: "auto" }}>
             <Link to="/">
               <Button
                 variant="contained"
@@ -89,7 +92,7 @@ function MovieList() {
                 />
               </Button>
             </Link>
-          </Container>
+          </Container> */}
         </Container>
       </Box>
     </Box>

@@ -8,7 +8,7 @@ function HomePage() {
     <div id="home-page">
       <Carousel />
       <MovieList />
-      <CinemaSystem />
+      {/* <CinemaSystem /> */}
     </div>
   );
 }

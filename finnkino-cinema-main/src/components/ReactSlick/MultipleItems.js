@@ -70,17 +70,17 @@ function MultipleItems({
     infinite: true,
     autoplay: autoplay,
     speed: speed,
-    autoplaySpeed: autoplaySpeed,
-    slidesToShow: slidesToShow,
+    autoplaySpeed: autoplaySpeed - 1,
+    slidesToShow: slidesToShow - 1,
     slidesToScroll: slidesToShow,
     nextArrow: <SampleNextArrow icon={nextArrow} />,
     prevArrow: <SamplePrevArrow icon={prevArrow} />,
     responsive: [
       {
-        breakpoint: 1023,
+        breakpoint: 1000,
         settings: {
-          slidesToShow: 5.2,
-          slidesToScroll: 5,
+          slidesToShow: 3.5,
+          slidesToScroll: 3,
           infinite: true,
           dots: true,
         },
@@ -88,22 +88,26 @@ function MultipleItems({
       {
         breakpoint: 739,
         settings: {
-          slidesToShow: 2.2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToShow: 1.5,
+          slidesToScroll: 1,
+          initialSlide: 1,
         },
       },
     ],
   };
 
   const renderCarouselContent = () => {
+    console.log(data);
+
     return data?.map((item) => {
       switch (Component) {
         case "img":
         case "Image":
+        case "hinhAnh":
           return (
             <Link key={item.maPhim} to={`/movie-detail/${item.maPhim}`}>
               <Image className="multi-carousel__img" src={item.hinhAnh} />
+              {item.tenPhim}
             </Link>
           );
         default:
