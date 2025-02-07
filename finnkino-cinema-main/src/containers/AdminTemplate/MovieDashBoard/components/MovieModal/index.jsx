@@ -196,7 +196,7 @@ function MovieModal(props) {
           <Loader />
         ) : (
           <Formik>
-            <Box sx={{ mt: 2 }} component="form" onSubmit={handleSubmit}>
+            <Box component="form" onSubmit={handleSubmit}>
               <FormControl fullWidth className="form__input-wrapper">
                 <FormLabel className="movie-form__input-label" htmlFor="movie-name">
                   Tên phim
@@ -277,7 +277,7 @@ function MovieModal(props) {
                   )}
                 </Box>
               </FormControl>
-              <FormControl
+              {/* <FormControl
                 fullWidth
                 className="form__input-wrapper"
                 sx={{ flexDirection: "row", alignItems: "center" }}
@@ -332,8 +332,8 @@ function MovieModal(props) {
                 </FormLabel>
                 <Switch name="hot" onClick={handleChangeSwitch("hot")} checked={values.hot} />
                 {errors.hot && touched.hot && <FormHelperText>{errors.hot}</FormHelperText>}
-              </FormControl>
-              <FormControl
+              </FormControl> */}
+              {/* <FormControl
                 className="form__input-wrapper"
                 sx={{ display: "flex", flexDirection: "row" }}
               >
@@ -357,7 +357,7 @@ function MovieModal(props) {
                 {errors.danhGia && touched.danhGia && (
                   <FormHelperText error>{errors.danhGia}</FormHelperText>
                 )}
-              </FormControl>
+              </FormControl> */}
               <FormControl className="form__input-wrapper">
                 <Box sx={{ flexDirection: "row" }}>
                   <FormLabel className="movie-form__input-label" htmlFor="movie-img" sx={{ mr: 1 }}>
