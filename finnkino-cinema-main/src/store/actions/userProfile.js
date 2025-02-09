@@ -4,13 +4,13 @@ import { userApi } from "@/api";
 /*
  * Fetch user profile
  */
-const actGetUserProfile = () => {
+const actGetUserProfile = (request) => {
   return (dispatch) => {
     dispatch(actUserProfileRequest());
 
     (async () => {
       try {
-        const user = await userApi.getUser();
+        const user = await userApi.getUser(request);
         dispatch(actUserProfileSuccess(user));
       } catch (error) {
         dispatch(actUserProfileFail(error));

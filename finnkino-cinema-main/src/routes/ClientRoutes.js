@@ -33,9 +33,9 @@ const ClientRoutes = {
     {
       path: "profile",
       element: (
-        // <RequireAuth roles={[ROLE.ADMIN, ROLE.CLIENT]}>
-        <ProfilePage />
-        // </RequireAuth>
+        <RequireAuth roles={[ROLE.ADMIN, ROLE.CLIENT]}>
+          <ProfilePage />
+        </RequireAuth>
       ),
     },
   ],

@@ -11,9 +11,9 @@ const userApi = {
     const url = resourceName + "DangKy";
     return axiosClient.post(url, user);
   },
-  getUser: () => {
+  getUser: (request) => {
     const url = resourceName + "ThongTinTaiKhoan";
-    return axiosClient.post(url);
+    return axiosClient.post(url, request);
   },
   updateUserProfile: (user) => {
     const url = resourceName + "CapNhatThongTinNguoiDung";

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useAuth } from "@/hooks";
 
 // Material UI
 import { Box, Container, Tab } from "@mui/material";
@@ -16,11 +17,13 @@ import { actGetUserProfile } from "@/store/actions/userProfile";
 import "./style.scss";
 
 const ProfilePage = () => {
+  const auth = useAuth();
   const [value, setValue] = useState("1");
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(actGetUserProfile());
+    var request = { taiKhoan: auth.user.taiKhoan };
+    dispatch(actGetUserProfile(request));
   }, []);
 
   const handleChangeTab = (event, newValue) => setValue(newValue);
