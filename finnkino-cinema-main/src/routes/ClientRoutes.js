@@ -21,13 +21,13 @@ const ClientRoutes = {
       path: "",
       element: <HomePage />,
     },
-    { path: "movie-detail/:id", element: <MovieDetailPage /> },
+    { path: "event-detail/:id", element: <MovieDetailPage /> },
     {
-      path: "ticket-booking/:scheduleId",
+      path: "event-booking/:scheduleId",
       element: (
-        // <RequireAuth roles={[ROLE.ADMIN, ROLE.CLIENT]}>
-        <TicketBookingPage />
-        // </RequireAuth>
+        <RequireAuth roles={[ROLE.ADMIN, ROLE.CLIENT]}>
+          <TicketBookingPage />
+        </RequireAuth>
       ),
     },
     {

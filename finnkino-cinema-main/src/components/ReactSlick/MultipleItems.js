@@ -105,15 +105,15 @@ function MultipleItems({
         case "Image":
         case "hinhAnh":
           return (
-            <Link key={item.maPhim} to={`/movie-detail/${item.maPhim}`}>
-              <Image className="multi-carousel__img" src={item.hinhAnh} />
-              {item.tenPhim}
+            <Link key={item.id} to={`/event-detail/${item.id}`}>
+              <Image className="multi-carousel__img" src={item.imageUrls} />
+              <span className="carousel__event_name">{item.name}</span>
             </Link>
           );
         default:
           return (
-            <Link key={item.maPhim} to={`/movie-detail/${item.maPhim}`}>
-              {item.tenPhim}
+            <Link key={item.id} to={`/event-detail/${item.id}`}>
+              <span className="carousel__event_name">{item.name}</span>
             </Link>
           );
       }

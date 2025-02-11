@@ -25,7 +25,7 @@ const MovieTableCells = (props) => {
         sx={{ width: "200px", height: "100px" }}
         className="movie-table__table-cell table-cell__movie-img"
       >
-        <Image src={row.hinhAnh} alt="movie image" />
+        <Image src={row.imageUrls} alt="movie image" />
       </TableCell>
       <TableCell
         align="left"

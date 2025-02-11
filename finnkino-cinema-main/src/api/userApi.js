@@ -1,10 +1,10 @@
 import axiosClient from "./config/axiosClient";
 
-const resourceName = "QuanLyNguoiDung/";
+const resourceName = "user/";
 
 const userApi = {
   login: (user) => {
-    const url = resourceName + "DangNhap";
+    const url = resourceName + "login";
     return axiosClient.post(url, user);
   },
   register: (user) => {

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link as RouterLink } from "react-router-dom";
 import { useAuth } from "@/hooks";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
 // Material UI
 import {
@@ -21,12 +22,6 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Input from "../components/Input";
 import Button from "../components/Button";
 
-// Yup resolver
-import { yupResolver } from "@hookform/resolvers/yup";
-
-// Login schema
-import { loginSchema } from "@/validators";
-
 // Api
 import { userApi } from "@/api";
 
@@ -35,6 +30,7 @@ import "./style.scss";
 
 const LoginPage = () => {
   const auth = useAuth();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -52,13 +48,13 @@ const LoginPage = () => {
       try {
         setLoading(true);
 
-        user = { taiKhoan: user.username, matKhau: user.password };
+        user = { email: user.username, password: user.password };
         user = await userApi.login(user);
         auth.login(user);
-
+        // dispatch(actUpdateRoleBase(user.maLoaiNguoiDung));
         navigate(-1);
       } catch (error) {
-        setError(error);
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -75,7 +71,7 @@ const LoginPage = () => {
     >
       {error && (
         <Alert severity="error" sx={{ mb: 2 }}>
-          {error}
+          Đăng nhập không thành công
         </Alert>
       )}
       <Input name="username" control={control} label="Tài khoản" />

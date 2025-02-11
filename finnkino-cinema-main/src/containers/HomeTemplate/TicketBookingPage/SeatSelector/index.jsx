@@ -35,7 +35,7 @@ const SeatSelector = () => {
               <Grid item xs={12}>
                 <Box className="seat-selector__screen"></Box>
                 <Typography className="seat-selector__screen-title" variant="h5" color="white">
-                  Màn hình
+                  Sân khấu
                 </Typography>
                 <Grid className="seat-selector__map-grid" container columns={18} spacing={1}>
                   <SeatGrid />

@@ -1,5 +1,5 @@
 .home__movie-list {
-  margin-top: 90px;
+  margin-top: 40px;
 
   .home-list__btn {
     font-size: 18px;
@@ -17,13 +17,26 @@
 //Movie list's slider
 .movie-list__carousel-wrapper {
   position: relative;
-  padding-bottom: 58px;
+  padding-bottom: 90px;
   background-color: var(--dark-gray);
 
   .movie-list__carousel-btn {
     width: 100%;
     font-size: 12px;
   }
+}
+
+.carousel__event_name {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+.slick-dots li button:before {
+  color: rgb(135, 135, 135);
+}
+
+.slick-dots li.slick-active button:before {
+  color: white;
 }
 
 .movie-list__carousel {

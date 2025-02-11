@@ -103,18 +103,18 @@ function MovieDetailsPage() {
             >
               {/* Background */}
               <Box className="movie-detail__top-background">
-                <Image src={data.hinhAnh} />
+                <Image src={data.imageUrls} />
               </Box>
 
               <Container className="movie-detail__top-info-wrapper container">
                 <Box className="top-info__img">
-                  <Image src={data.hinhAnh} alt={data.tenPhim} />
+                  <Image src={data.imageUrls} alt={data.name} />
                 </Box>
 
                 {/* Top info for PC screen */}
                 <Box className="top-info__content hide-on-mobile-tablet">
                   <Typography variant="h3" className="top-info__content-title" sx={{ mb: 2 }}>
-                    {data.tenPhim}
+                    {data.name}
                   </Typography>
                   <Button
                     variant="outlined"
@@ -131,7 +131,7 @@ function MovieDetailsPage() {
                     className="btn-wrapper btn-filled top-info__btn"
                     endIcon={<FontAwesomeIcon icon={faAnglesRight} />}
                   >
-                    <Link to={`/ticket-booking/${data.lichChieu[0].maLichChieu}`}>Tickets</Link>
+                    <Link to={`/event-booking/${data.id}`}>Tickets</Link>
                   </Button>
                 </Box>
 
@@ -142,7 +142,7 @@ function MovieDetailsPage() {
                   className="btn-wrapper btn-filled top-info__btn hide-on-pc"
                   endIcon={<FontAwesomeIcon icon={faAnglesRight} />}
                 >
-                  <Link to="/ticket-booking">Tickets</Link>
+                  <Link to={`/event-booking/${data.id}`}>Tickets</Link>
                 </Button>
               </Container>
             </Box>
@@ -167,16 +167,27 @@ function MovieDetailsPage() {
               mb={2}
               variant="h3"
             >
-              {data.tenPhim}
+              {data.name}
             </Typography>
             <Grid container spacing={2} className="movie-detail__content">
               <Grid item xs={12} md={7} className="movie-detail__syno">
                 <h4 className="movie-detail__content-title">Mô tả</h4>
-                <p>{data.moTa}</p>
+                <p>{data.description}</p>
               </Grid>
               <Grid item xs={12} md={5} className="movie-detail__details">
                 <h4 className="movie-detail__content-title">Chi tiết</h4>
-                <p>Ngày công chiếu: {moment(data.ngayKhoiChieu).format("D/M/YYYY hh:mm")}</p>
+                <p>Thời gian công chiếu: {moment(data.startDate).format("D/M/YYYY hh:mm")}</p>
+                <p>Thời gian kết thúc: {moment(data.endDate).format("D/M/YYYY hh:mm")}</p>
+              </Grid>
+            </Grid>
+            <Grid container spacing={2} className="movie-detail__content">
+              <Grid item xs={12} md={7} className="movie-detail__syno">
+                <h4 className="movie-detail__content-title">Địa chỉ</h4>
+                <p>{data.venueAddress + ", " + data.venueName}</p>
+              </Grid>
+              <Grid item xs={12} md={5} className="movie-detail__details">
+                <h4 className="movie-detail__content-title">Thể loại</h4>
+                <p>{data.category}</p>
               </Grid>
             </Grid>
           </Container>

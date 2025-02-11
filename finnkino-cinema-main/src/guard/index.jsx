@@ -7,8 +7,10 @@ const RequireAuth = ({ children, roles }) => {
   if (!auth.user) {
     return <Navigate to="/auth/login" />;
   }
+  let userRoles = auth.user.roles;
 
-  const isAllowed = roles.includes(auth.user?.role);
+  const isAllowed = userRoles.some((role) => roles.includes(role));
+
   if (isAllowed) {
     return children;
   }

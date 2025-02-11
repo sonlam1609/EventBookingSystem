@@ -1,8 +1,8 @@
 export const GROUP_ID = "GP06";
 
 export const ROLE = {
-  ADMIN: "QuanTri",
-  CLIENT: "KhachHang",
+  ADMIN: "Admin",
+  CLIENT: "User",
 };
 
 export const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

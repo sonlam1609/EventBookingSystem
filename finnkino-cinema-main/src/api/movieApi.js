@@ -1,6 +1,6 @@
 import axiosClient from "./config/axiosClient";
 
-const resourceName = "QuanLyPhim/";
+const resourceName = "event/";
 
 const movieApi = {
   getBannerList: () => {
@@ -9,13 +9,15 @@ const movieApi = {
   },
   getMovieList: (params, movieName) => {
     let url;
-    if (movieName !== "") {
-      url = resourceName + `LayDanhSachPhim?maNhom=${params.maNhom}&tenPhim=${movieName}`;
-      return axiosClient.get(url);
-    } else {
-      url = resourceName + "LayDanhSachPhim";
-      return axiosClient.get(url, { params });
-    }
+    url = resourceName + "event-list";
+    return axiosClient.get(url);
+    // if (movieName !== "") {
+    //   url = resourceName + `LayDanhSachPhim?maNhom=${params.maNhom}&tenPhim=${movieName}`;
+    //   return axiosClient.get(url);
+    // } else {
+    //   url = resourceName + "LayDanhSachPhim";
+    //   return axiosClient.get(url, { params });
+    // }
   },
   getPaginatedMovieList: (params) => {
     const url = resourceName + "LayDanhSachPhimPhanTrang";
@@ -26,7 +28,7 @@ const movieApi = {
     return axiosClient.get(url, { params });
   },
   getMovieDetails: (params) => {
-    const url = resourceName + `LayThongTinPhim?MaPhim=${params}`;
+    const url = resourceName + `event-detail/${params}`;
     return axiosClient.get(url);
   },
   deleteMovie: (params) => {

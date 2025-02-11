@@ -31,14 +31,7 @@ function MovieList() {
   let movieTypeList;
 
   const handleMovieType = () => {
-    console.log("*****", movieList);
     return movieList;
-
-    // if (movieType === "now") {
-    //   return (movieTypeList = movieList?.filter((movie) => movie.dangChieu));
-    // } else if (movieType === "soon") {
-    //   return (movieTypeList = movieList?.filter((movie) => movie.sapChieu));
-    // }
   };
 
   return (
@@ -49,15 +42,15 @@ function MovieList() {
           className={movieType === "now" ? "home-list__btn active" : "home-list__btn"}
           onClick={() => dispatch({ type: SET_MOVIE_TYPE_NOW })}
         >
-          Phim đang chiếu
+          Sự kiện
         </Button>
-        <Button
+        {/* <Button
           variant="text"
           className={movieType === "soon" ? "home-list__btn active" : "home-list__btn"}
           onClick={() => dispatch({ type: SET_MOVIE_TYPE_SOON })}
         >
           Phim sắp chiếu
-        </Button>
+        </Button> */}
       </Typography>
 
       <Box className="movie-list__carousel-wrapper">

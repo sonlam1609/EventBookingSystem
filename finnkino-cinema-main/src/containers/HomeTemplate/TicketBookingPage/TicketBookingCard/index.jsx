@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import moment from "moment";
 
 // Material UI
 import {
@@ -31,7 +32,7 @@ const TicketBookingCard = () => {
     (rootReducer) => rootReducer.ticketBooking,
   );
 
-  const movie = ticketBookingDetails.data?.thongTinPhim;
+  const movie = ticketBookingDetails.data?.eventInfo;
   const loading = ticketBookingDetails.loading;
 
   const renderSelectedSeats = () =>
@@ -74,35 +75,26 @@ const TicketBookingCard = () => {
             className="ticket-booking-card__media"
             component="img"
             alt="movie picture"
-            image={movie?.hinhAnh}
+            image={movie?.imageUrls}
           />
           {/* Card content */}
           <CardContent className="ticket-booking-card__content">
             {/* Movie name */}
             <Typography className="ticket-booking-card__movie-name" component="h2" variant="h5">
-              {movie?.tenPhim}
+              {movie?.eventName}
             </Typography>
-            <Stack direction="row" justifyContent="between" alignItems="center" spacing={1}>
-              <Box className="ticket-booking-card__movie-age-limit-label">C13</Box>
-              <Typography className="ticket-booking-card__movie-age-limit-content" component="p">
-                (*) Phim chỉ dành cho khán giả từ 13 tuổi trở lên
-              </Typography>
-            </Stack>
+
             {/* Booking details */}
             <List>
               <ListItem className="ticket-booking-card__booking-details">
                 <ListItemText disableTypography>
-                  <strong>Rạp:</strong> {movie?.tenCumRap} | {movie?.tenRap}
+                  <strong>Địa chỉ:</strong> {movie?.venueAddress}
                 </ListItemText>
               </ListItem>
               <ListItem className="ticket-booking-card__booking-details">
                 <ListItemText disableTypography>
-                  <strong>Địa chỉ:</strong> {movie?.diaChi}
-                </ListItemText>
-              </ListItem>
-              <ListItem className="ticket-booking-card__booking-details">
-                <ListItemText disableTypography>
-                  <strong>Ngày chiếu:</strong> {movie?.gioChieu} | {movie?.ngayChieu}
+                  <strong>Ngày chiếu:</strong> {moment(movie?.startDate).format("D/MM/YYYY HH:MM")}{" "}
+                  | {moment(movie?.endDate).format("D/MM/YYYY HH:MM")}
                 </ListItemText>
               </ListItem>
             </List>

@@ -1,6 +1,6 @@
 import axiosClient from "./config/axiosClient";
 
-const resourceName = "QuanLyDatVe/";
+const resourceName = "event/";
 
 const ticketBookingApi = {
   bookTicket: (ticket) => {
@@ -8,8 +8,8 @@ const ticketBookingApi = {
     return axiosClient.post(url, ticket);
   },
   getTicketOfficeList: (params) => {
-    const url = resourceName + "LayDanhSachPhongVe";
-    return axiosClient.get(url, { params });
+    const url = resourceName + `event-booking/${params}`;
+    return axiosClient.get(url);
   },
   createShowtime: (showtime) => {
     const url = resourceName + "TaoLichChieu";

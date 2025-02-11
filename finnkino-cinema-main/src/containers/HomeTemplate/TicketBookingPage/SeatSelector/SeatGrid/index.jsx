@@ -18,7 +18,7 @@ const SeatGrid = () => {
 
   const dispatch = useDispatch();
 
-  const seats = ticketBookingDetails.data?.danhSachGhe;
+  const seats = ticketBookingDetails.data?.seatInfos;
 
   if (!seats || seats.length < 1) return;
 
@@ -31,6 +31,7 @@ const SeatGrid = () => {
   // Handle choose seat
   const handleChooseSeat = (id, price, code) => {
     const seat = { id, price, code };
+    console.log("handleChooseSeat", id, price, code);
     dispatch(actChooseSeat(seat));
   };
 
@@ -47,12 +48,10 @@ const SeatGrid = () => {
 
       // Get seat details
       const {
-        maGhe: seatId,
-        maRap: cinemaId,
-        loaiGhe: seatType,
-        giaVe: seatPrice,
-        daDat: sold,
-        taiKhoanNguoiDat: username,
+        seatId: seatEventId,
+        type: seatType,
+        price: seatPrice,
+        status: sold,
       } = seats[seatIdx];
 
       // Select type of seat
@@ -62,22 +61,22 @@ const SeatGrid = () => {
         seatTypeClass = "vip";
       }
 
-      const idx = selectedSeats.findIndex((selectedSeat) => selectedSeat.id === seatId);
+      const idx = selectedSeats.findIndex((selectedSeat) => selectedSeat.id === seatEventId);
       if (idx !== -1) {
         seatTypeClass = "selected";
       }
 
-      if (sold) {
+      if (sold != "available") {
         seatTypeClass = "sold";
       }
 
       // Render seat
       gridItems.push(
-        <Grid item xs={1} key={seatId}>
+        <Grid item xs={1} key={seatEventId}>
           <Box className={`seat-selector__seat-wrapper ${seatTypeClass}`}>
             <Box
               className="seat-selector__seat"
-              onClick={() => handleChooseSeat(seatId, seatPrice, seatCode)}
+              onClick={() => handleChooseSeat(seatEventId, seatPrice, seatCode)}
             >
               {sold ? "X" : seatNum}
             </Box>
@@ -101,6 +100,8 @@ const SeatGrid = () => {
       </Grid>,
     );
   }
+
+  console.log(seats);
 
   return gridItems;
 };
