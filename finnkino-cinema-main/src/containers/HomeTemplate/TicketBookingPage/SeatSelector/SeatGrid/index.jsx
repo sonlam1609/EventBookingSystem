@@ -57,7 +57,7 @@ const SeatGrid = () => {
       // Select type of seat
       let seatTypeClass = "selectable";
 
-      if (seatType === "Vip") {
+      if (seatType === "vip") {
         seatTypeClass = "vip";
       }
 
