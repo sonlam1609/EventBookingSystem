@@ -66,7 +66,7 @@ const SeatGrid = () => {
         seatTypeClass = "selected";
       }
 
-      if (sold != "available") {
+      if (sold !== "available") {
         seatTypeClass = "sold";
       }
 
@@ -78,7 +78,7 @@ const SeatGrid = () => {
               className="seat-selector__seat"
               onClick={() => handleChooseSeat(seatEventId, seatPrice, seatCode)}
             >
-              {sold ? "X" : seatNum}
+              {sold !== "available" ? "X" : seatNum}
             </Box>
           </Box>
         </Grid>,

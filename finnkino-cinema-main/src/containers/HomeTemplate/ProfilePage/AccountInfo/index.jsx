@@ -66,10 +66,10 @@ const AccountInfo = () => {
   useEffect(() => {
     if (!user) return;
 
-    setValue("username", user.taiKhoan);
-    setValue("fullName", user.hoTen);
+    setValue("username", user.email);
+    setValue("fullName", user.fullName);
     setValue("email", user.email);
-    setValue("phoneNumber", user.soDT);
+    setValue("phoneNumber", user.phoneNumber);
     setValue("currentPasswordRef", user.matKhau);
     setAllowChangePassword(false);
     setCurrentPassword();

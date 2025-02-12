@@ -8,7 +8,7 @@ const initialState = {
     title: "Thông báo",
     children: [
       "Cập nhật thông tin tài khoản thành công!",
-      "Vui lòng liên hệ supports@finnkino.com để được hỗ trợ tốt hơn.",
+      "Vui lòng liên hệ deptrai@fpt.com để được hỗ trợ tốt hơn.",
     ],
     buttonContent: "Chấp nhận",
     path: "",
