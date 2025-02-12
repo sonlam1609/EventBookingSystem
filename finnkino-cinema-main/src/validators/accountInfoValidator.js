@@ -8,14 +8,20 @@ const accountInfoSchema = yup.object({
   email: yup.string().required(msg.required).email(msg.email),
   phoneNumber: yup.string().required(msg.required).matches(pattern.phoneNumber, msg.phoneNumber),
   currentPasswordRef: yup.string(),
-  currentPassword: yup
-    .string()
-    .oneOf([yup.ref("currentPasswordRef")], "Mật khẩu hiện tại không đúng."),
-  newPassword: yup.string().required(msg.required).matches(pattern.password, msg.password),
-  confirmedNewPassword: yup
-    .string()
-    .required(msg.required)
-    .oneOf([yup.ref("newPassword")], msg.confirmedPassword),
+  currentPassword: yup.string().when("$allowChangePassword", {
+    is: true,
+    then: yup.string().required("Mật khẩu hiện tại không được bỏ trống")
+  }),
+  newPassword: yup.string().when("$allowChangePassword", {
+    is: true,
+    then: yup.string().required("Mật khẩu mới không được bỏ trống")
+  }),
+  confirmedNewPassword: yup.string().when("$allowChangePassword", {
+    is: true,
+    then: yup.string()
+      .required("Xác nhận mật khẩu không được bỏ trống")
+      .oneOf([yup.ref("newPassword")], "Mật khẩu không khớp")
+  })
 });
 
 export default accountInfoSchema;
