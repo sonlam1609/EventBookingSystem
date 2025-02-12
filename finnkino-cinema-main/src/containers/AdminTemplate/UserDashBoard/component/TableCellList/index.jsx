@@ -1,13 +1,13 @@
-import { TableCell } from "@mui/material";
-
-// Components
-import { EditMovieBtn, DeleteMovieBtn } from "../../../components/Buttons";
-
 //Others
 import "./style.scss";
 
+// Components
+import { DeleteEventBtn, EditEventBtn } from "../../../components/Buttons";
+
+import { TableCell } from "@mui/material";
+
 const UserTableCells = (props) => {
-  const { row, index, labelId, handleDeleteMovie, handleEditMovie } = props;
+  const { row, index, labelId, handleDeleteEvent, handleEditEvent } = props;
   return (
     <>
       <TableCell
@@ -42,8 +42,8 @@ const UserTableCells = (props) => {
         sx={{ width: "150px" }}
         className="management-table__table-cell table-cell__management-actions"
       >
-        <DeleteMovieBtn onClick={() => handleDeleteMovie(row.taiKhoan)} />
-        <EditMovieBtn onClick={() => handleEditMovie(row.taiKhoan)} />
+        <DeleteEventBtn onClick={() => handleDeleteEvent(row.taiKhoan)} />
+        <EditEventBtn onClick={() => handleEditEvent(row.taiKhoan)} />
       </TableCell>
     </>
   );

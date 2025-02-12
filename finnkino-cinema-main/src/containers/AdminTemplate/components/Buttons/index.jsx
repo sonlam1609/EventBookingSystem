@@ -1,12 +1,13 @@
-// Material UI
-import { LoadingButton } from "@mui/lab";
-import { Button, IconButton } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { BorderColor } from "@mui/icons-material";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-
 // Scss
 import "./style.scss";
+
+import { Button, IconButton } from "@mui/material";
+
+import { BorderColor } from "@mui/icons-material";
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import DeleteIcon from "@mui/icons-material/Delete";
+// Material UI
+import { LoadingButton } from "@mui/lab";
 
 const SubmitButton = ({ children, onClick, ...others }) => (
   <LoadingButton
@@ -38,15 +39,15 @@ const AddItemBtn = ({ children, onClick, ...props }) => (
   </Button>
 );
 
-const EditMovieBtn = (props) => (
+const EditEventBtn = (props) => (
   <IconButton color="info" {...props}>
-    <BorderColor className="movie-management__btn-icon" />
+    <BorderColor className="event-management__btn-icon" />
   </IconButton>
 );
 
-const DeleteMovieBtn = (props) => (
+const DeleteEventBtn = (props) => (
   <IconButton color="error" {...props}>
-    <DeleteIcon className="movie-management__btn-icon" />
+    <DeleteIcon className="event-management__btn-icon" />
   </IconButton>
 );
 
@@ -56,4 +57,4 @@ const CreateScheduleBtn = (props) => (
   </IconButton>
 );
 
-export { SubmitButton, EditMovieBtn, DeleteMovieBtn, AddItemBtn, CreateScheduleBtn };
+export { SubmitButton, EditEventBtn, DeleteEventBtn, AddItemBtn, CreateScheduleBtn };

@@ -1,20 +1,18 @@
-import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useRef, useState } from "react";
 
+import { AddItemBtn } from "../components/Buttons";
 // Material UI
 import { Container } from "@mui/system";
-
+import MuiEnhancedTable from "../components/MuiEnhancedTable";
 //Components
 import SearchBar from "../components/SearchBar";
-import { AddItemBtn } from "../components/Buttons";
-import MuiEnhancedTable from "../components/MuiEnhancedTable";
-import UserTableCells from "./component/TableCellList";
-import headCells from "./constants";
 import UserModal from "./component/UserModal";
-
+import UserTableCells from "./component/TableCellList";
 //Others
 import actGetUserList from "@/store/actions/userList";
 import { actUserDetailsSuccess } from "@/store/actions/userDetails";
+import headCells from "./constants";
 
 function UserDashBoard() {
   const [openModalUser, setOpenModalUser] = useState(false);
@@ -40,7 +38,7 @@ function UserDashBoard() {
           overflow: "hidden",
         }}
       >
-        <SearchBar onSubmit={handleSearch} className="movie-dashboard__search" />
+        <SearchBar onSubmit={handleSearch} className="event-dashboard__search" />
         <AddItemBtn onClick={() => setOpenModalUser(true)}>Thêm người dùng</AddItemBtn>
         <MuiEnhancedTable
           headCells={headCells}

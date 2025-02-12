@@ -1,12 +1,9 @@
-//Others
-import { eventApi, userApi } from "@/api";
-
 const headCells = [
   {
     id: "maPhim",
     numeric: true,
     disablePadding: true,
-    label: "Mã event",
+    label: "Mã sự kiện",
     sortFunction: true,
   },
   {
@@ -39,20 +36,4 @@ const headCells = [
   },
 ];
 
-const fetchUserDelete = async (userAccount) => {
-  try {
-    await userApi.deleteUser(userAccount);
-  } catch (error) {
-    alert(error);
-  }
-};
-
-const fetchEventDelete = async (eventId) => {
-  try {
-    await eventApi.deleteEvent(eventId);
-  } catch (error) {
-    alert(error);
-  }
-};
-
-export { headCells, fetchUserDelete, fetchEventDelete };
+export { headCells };

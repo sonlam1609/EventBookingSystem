@@ -1,30 +1,28 @@
-import { useDispatch, useSelector } from "react-redux";
-import moment from "moment";
+// Scss
+import "./style.scss";
 
 // Material UI
 import {
+  Box,
   Card,
-  CardMedia,
-  CardContent,
   CardActions,
+  CardContent,
+  CardMedia,
   Divider,
-  Typography,
   List,
   ListItem,
   ListItemText,
-  Box,
   Stack,
+  Typography,
 } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+import { useDispatch, useSelector } from "react-redux";
 
 // Components
 import Loader from "@/components/Loader";
-
+import { LoadingButton } from "@mui/lab";
 // Redux actions
 import { actBookTicket } from "@/store/actions/ticketBooking";
-
-// Scss
-import "./style.scss";
+import moment from "moment";
 
 const TicketBookingCard = () => {
   const dispatch = useDispatch();
@@ -32,7 +30,7 @@ const TicketBookingCard = () => {
     (rootReducer) => rootReducer.ticketBooking,
   );
 
-  const movie = ticketBookingDetails.data?.eventInfo;
+  const event = ticketBookingDetails.data?.eventInfo;
   const loading = ticketBookingDetails.loading;
 
   const renderSelectedSeats = () =>
@@ -57,7 +55,7 @@ const TicketBookingCard = () => {
 
   const handleBookTicket = () => {
     const ticket = {
-      maLichChieu: movie?.maLichChieu,
+      maLichChieu: event?.maLichChieu,
       danhSachVe: selectedSeats?.map((seat) => ({ maGhe: seat.id, giaVe: seat.price })),
     };
 
@@ -70,31 +68,31 @@ const TicketBookingCard = () => {
         <Loader />
       ) : (
         <>
-          {/* Movie image */}
+          {/* Event image */}
           <CardMedia
             className="ticket-booking-card__media"
             component="img"
-            alt="movie picture"
-            image={movie?.imageUrls}
+            alt="event picture"
+            image={event?.imageUrls}
           />
           {/* Card content */}
           <CardContent className="ticket-booking-card__content">
-            {/* Movie name */}
-            <Typography className="ticket-booking-card__movie-name" component="h2" variant="h5">
-              {movie?.eventName}
+            {/* Event name */}
+            <Typography className="ticket-booking-card__event-name" component="h2" variant="h5">
+              {event?.eventName}
             </Typography>
 
             {/* Booking details */}
             <List>
               <ListItem className="ticket-booking-card__booking-details">
                 <ListItemText disableTypography>
-                  <strong>Địa chỉ:</strong> {movie?.venueAddress}
+                  <strong>Địa chỉ:</strong> {event?.venueAddress}
                 </ListItemText>
               </ListItem>
               <ListItem className="ticket-booking-card__booking-details">
                 <ListItemText disableTypography>
-                  <strong>Ngày chiếu:</strong> {moment(movie?.startDate).format("D/MM/YYYY HH:MM")}{" "}
-                  | {moment(movie?.endDate).format("D/MM/YYYY HH:MM")}
+                  <strong>Ngày chiếu:</strong> {moment(event?.startDate).format("D/MM/YYYY HH:MM")}{" "}
+                  | {moment(event?.endDate).format("D/MM/YYYY HH:MM")}
                 </ListItemText>
               </ListItem>
             </List>

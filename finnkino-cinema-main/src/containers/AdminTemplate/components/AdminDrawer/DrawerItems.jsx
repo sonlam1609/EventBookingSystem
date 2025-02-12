@@ -1,8 +1,7 @@
-import { useNavigate, useLocation } from "react-router-dom";
-
+import { CalendarMonth, LocalMovies, PeopleAlt } from "@mui/icons-material";
 // Material UI
 import { ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
-import { PeopleAlt, LocalMovies, CalendarMonth } from "@mui/icons-material";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const items = [
   {
@@ -13,7 +12,7 @@ const items = [
   {
     Icon: LocalMovies,
     label: "Quản lý phim",
-    path: "movie-management",
+    path: "event-management",
   },
 ];
 

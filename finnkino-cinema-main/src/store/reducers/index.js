@@ -1,24 +1,23 @@
-import { combineReducers } from "redux";
-
-// Reducers
-import movieListReducer from "./movieList";
-import movieBannerReducer from "./movieBanner";
-import movieDetailsReducer from "./movieDetails";
-import cinemaSystemReducer from "./cinemaSystem";
-import movieManagementReducer from "./movieManagement";
-import userDetailsReducer from "./userDetails";
-import userManagementReducer from "./userManagement";
-import userListReducer from "./userList";
-import ticketBookingReducer from "./ticketBooking";
-import userProfileReducer from "./userProfile";
 import baseAuthRedecers from "./baseAuth.reducers";
+import cinemaSystemReducer from "./cinemaSystem";
+import { combineReducers } from "redux";
+import eventBannerReducer from "./eventBanner";
+import eventDetailsReducer from "./eventDetails";
+// Reducers
+import eventListReducer from "./eventList";
+import eventManagementReducer from "./eventManagement";
+import ticketBookingReducer from "./ticketBooking";
+import userDetailsReducer from "./userDetails";
+import userListReducer from "./userList";
+import userManagementReducer from "./userManagement";
+import userProfileReducer from "./userProfile";
 
 const rootReducer = combineReducers({
-  movieList: movieListReducer,
-  movieBanner: movieBannerReducer,
-  movieDetails: movieDetailsReducer,
+  eventList: eventListReducer,
+  eventBanner: eventBannerReducer,
+  eventDetails: eventDetailsReducer,
   cinemaSystem: cinemaSystemReducer,
-  movieManagement: movieManagementReducer,
+  eventManagement: eventManagementReducer,
   userDetails: userDetailsReducer,
   userManagement: userManagementReducer,
   userList: userListReducer,

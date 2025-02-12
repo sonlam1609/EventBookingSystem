@@ -1,15 +1,13 @@
-import { lazy } from "react";
-
-// Route Guard
-import RequireAuth from "@/guard";
-
 // Constants
 import { ROLE } from "@/constants";
+// Route Guard
+import RequireAuth from "@/guard";
+import { lazy } from "react";
 
 // Pages
 const HomeTemp = lazy(() => import("@/containers/HomeTemplate"));
 const HomePage = lazy(() => import("@/containers/HomeTemplate/HomePage"));
-const MovieDetailPage = lazy(() => import("@/containers/HomeTemplate/MovieDetailsPage"));
+const EventDetailPage = lazy(() => import("@/containers/HomeTemplate/EventDetailsPage"));
 const TicketBookingPage = lazy(() => import("@/containers/HomeTemplate/TicketBookingPage"));
 const ProfilePage = lazy(() => import("@/containers/HomeTemplate/ProfilePage"));
 
@@ -21,7 +19,7 @@ const ClientRoutes = {
       path: "",
       element: <HomePage />,
     },
-    { path: "event-detail/:id", element: <MovieDetailPage /> },
+    { path: "event-detail/:id", element: <EventDetailPage /> },
     {
       path: "event-booking/:scheduleId",
       element: (

@@ -1,12 +1,12 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 
 //Material UI
-import { Tabs, Tab, Typography, Box } from "@mui/material";
+import { Box, Tab, Tabs, Typography } from "@mui/material";
 
 //Components
 import Image from "@/components/Image";
-import MovieSchedule from "../MovieSchedule";
+import EventSchedule from "../EventSchedule";
+import PropTypes from "prop-types";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -90,8 +90,8 @@ function CinemaGroup({ data }) {
             },
           }}
         >
-          {cinemaGroup.danhSachPhim?.map((movie, index) => (
-            <MovieSchedule key={index} movie={movie} cinemaGroup={cinemaGroup} />
+          {cinemaGroup.danhSachPhim?.map((event, index) => (
+            <EventSchedule key={index} event={event} cinemaGroup={cinemaGroup} />
           ))}
         </TabPanel>
       );
