@@ -43,8 +43,10 @@ const actBookTicket = (ticket) => {
     (async () => {
       try {
         await ticketBookingApi.bookTicket(ticket);
+
         dispatch(actBookTicketSuccess());
       } catch (error) {
+        console.log("booking fail", error);
         dispatch(actBookTicketFail(error));
       }
     })();

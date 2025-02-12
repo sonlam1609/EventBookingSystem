@@ -4,7 +4,7 @@ const resourceName = "event/";
 
 const ticketBookingApi = {
   bookTicket: (ticket) => {
-    const url = resourceName + "DatVe";
+    const url = "user/booking";
     return axiosClient.post(url, ticket);
   },
   getTicketOfficeList: (params) => {

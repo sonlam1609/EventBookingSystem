@@ -95,10 +95,7 @@ const ticketBookingReducer = (state = initialState, { type, payload }) => {
           ...state.modal,
           open: true,
           title: "Thông báo",
-          children: [
-            "Đặt vé thành công!",
-            "Chúc bạn có trải nghiệm xem phim vui vẻ tại Finnkino Cinema",
-          ],
+          children: ["Đặt vé thành công!", "Chúc bạn có cuộc chơi vui vẻ"],
           path: "/",
         },
       };

@@ -57,8 +57,20 @@ const TicketBookingCard = () => {
 
   const handleBookTicket = () => {
     const ticket = {
-      maLichChieu: movie?.maLichChieu,
-      danhSachVe: selectedSeats?.map((seat) => ({ maGhe: seat.id, giaVe: seat.price })),
+      EventId: movie?.eventID,
+      SeatedInfos: selectedSeats?.map((seat) => {
+        const match = seat.code.match(/^([A-Z]+)(\d+)$/);
+        const row = match ? match[1] : "";
+        const number = match ? match[2] : "";
+
+        return {
+          SeatId: seat.id,
+          Price: seat.price,
+          EventId: movie?.eventID,
+          Row: row,
+          Number: number,
+        };
+      }),
     };
 
     dispatch(actBookTicket(ticket));

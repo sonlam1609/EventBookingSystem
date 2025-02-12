@@ -72,7 +72,7 @@ const SeatGrid = () => {
 
       // Render seat
       gridItems.push(
-        <Grid item xs={1} key={seatEventId}>
+        <Grid item xs={1} key={seatEventId + "-" + gridCell}>
           <Box className={`seat-selector__seat-wrapper ${seatTypeClass}`}>
             <Box
               className="seat-selector__seat"
@@ -100,9 +100,6 @@ const SeatGrid = () => {
       </Grid>,
     );
   }
-
-  console.log(seats);
-
   return gridItems;
 };
 
