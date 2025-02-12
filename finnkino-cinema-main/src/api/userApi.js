@@ -16,7 +16,7 @@ const userApi = {
     return axiosClient.get(url);
   },
   updateUserProfile: (user) => {
-    const url = resourceName + "CapNhatThongTinNguoiDung";
+    const url = resourceName + "update-profile";
     return axiosClient.put(url, user);
   },
   getUserList: (params, keyword) => {
