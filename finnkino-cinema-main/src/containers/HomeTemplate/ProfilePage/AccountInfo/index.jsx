@@ -61,15 +61,16 @@ const AccountInfo = () => {
       confirmedNewPassword: "",
     },
     resolver: yupResolver(accountInfoSchema),
+    context: { allowChangePassword }
   });
 
   useEffect(() => {
     if (!user) return;
 
-    setValue("username", user.taiKhoan);
-    setValue("fullName", user.hoTen);
+    setValue("username", user.email);
+    setValue("fullName", user.fullName);
     setValue("email", user.email);
-    setValue("phoneNumber", user.soDT);
+    setValue("phoneNumber", user.phoneNumber);
     setValue("currentPasswordRef", user.matKhau);
     setAllowChangePassword(false);
     setCurrentPassword();
@@ -97,12 +98,13 @@ const AccountInfo = () => {
   const handleUpdateAccountInfo = (userInfo) => {
     const updatedUser = {
       taiKhoan: userInfo.username,
-      hoTen: userInfo.fullName,
-      matKhau: userInfo.confirmedNewPassword,
+      fullName: userInfo.fullName,
       email: userInfo.email,
-      soDt: userInfo.phoneNumber,
-      maNhom: GROUP_ID,
-      maLoaiNguoiDung: user.loaiNguoiDung.maLoaiNguoiDung,
+      phoneNumber: userInfo.phoneNumber,
+      oldPassword: userInfo.currentPassword,
+      newPassword: userInfo.newPassword,
+      confirmedNewPassword: userInfo.confirmedNewPassword,
+      allowChangePassword: allowChangePassword,
     };
 
     dispatch(actUpdateUserProfile(updatedUser, setShowModal));
@@ -120,9 +122,9 @@ const AccountInfo = () => {
     >
       <Grid container spacing={{ xs: 0, sm: 4 }}>
         <Grid item xs={12} sm={4}>
-          <InputLabel className="account-info__input-label">Tài khoản</InputLabel>
+          <InputLabel className="account-info__input-label">Email</InputLabel>
           <Input
-            name="username"
+            name="email"
             control={control}
             InputProps={{
               readOnly: true,
@@ -130,20 +132,12 @@ const AccountInfo = () => {
           />
         </Grid>
         <Grid item xs={12} sm={4}>
-          <InputLabel className="account-info__input-label">Họ và tên</InputLabel>
-          <Input
-            name="fullName"
-            control={control}
-            InputProps={{
-              readOnly: true,
-            }}
-          />
         </Grid>
       </Grid>
       <Grid container spacing={{ xs: 0, sm: 4 }}>
         <Grid item xs={12} sm={4}>
-          <InputLabel className="account-info__input-label">Email</InputLabel>
-          <Input name="email" control={control} />
+          <InputLabel className="account-info__input-label">Họ và tên</InputLabel>
+          <Input name="fullName" control={control} />
         </Grid>
         <Grid item xs={12} sm={4}>
           <InputLabel className="account-info__input-label">Số điện thoại</InputLabel>
@@ -165,16 +159,6 @@ const AccountInfo = () => {
                 control={control}
                 placeholder="Mật khẩu hiện tại"
                 InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={() => handleShowPassword("currentPassword")}
-                      >
-                        {showPassword["currentPassword"] ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
                 }}
               />
             </Grid>

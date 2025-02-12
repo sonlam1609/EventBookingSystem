@@ -66,19 +66,19 @@ const SeatGrid = () => {
         seatTypeClass = "selected";
       }
 
-      if (sold != "available") {
+      if (sold !== "available") {
         seatTypeClass = "sold";
       }
 
       // Render seat
       gridItems.push(
-        <Grid item xs={1} key={seatEventId}>
+        <Grid item xs={1} key={seatEventId + "-" + gridCell}>
           <Box className={`seat-selector__seat-wrapper ${seatTypeClass}`}>
             <Box
               className="seat-selector__seat"
               onClick={() => handleChooseSeat(seatEventId, seatPrice, seatCode)}
             >
-              {sold ? "X" : seatNum}
+              {sold !== "available" ? "X" : seatNum}
             </Box>
           </Box>
         </Grid>,
@@ -100,9 +100,6 @@ const SeatGrid = () => {
       </Grid>,
     );
   }
-
-  console.log(seats);
-
   return gridItems;
 };
 

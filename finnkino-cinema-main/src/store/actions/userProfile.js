@@ -37,18 +37,20 @@ const actUserProfileSuccess = (data) => ({
  * Update user profile
  */
 const actUpdateUserProfile = (user, setShowModal) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(actUpdateUserProfileRequest());
 
-    (async () => {
-      try {
-        user = await userApi.updateUserProfile(user);
-        dispatch(actUpdateUserProfileSuccess(user));
-        setShowModal(true);
-      } catch (error) {
-        dispatch(actUpdateUserProfileFail(error));
-      }
-    })();
+    try {
+      const updatedUser = await userApi.updateUserProfile(user);
+      dispatch(actUpdateUserProfileSuccess(updatedUser));
+      setShowModal(true);
+      
+      // After successful update, fetch the updated profile
+      const request = { taiKhoan: user.taiKhoan };
+      dispatch(actGetUserProfile(request));
+    } catch (error) {
+      dispatch(actUpdateUserProfileFail(error));
+    }
   };
 };
 

@@ -95,10 +95,7 @@ const ticketBookingReducer = (state = initialState, { type, payload }) => {
           ...state.modal,
           open: true,
           title: "Thông báo",
-          children: [
-            "Đặt vé thành công!",
-            "Chúc bạn có trải nghiệm xem phim vui vẻ tại Finnkino Cinema",
-          ],
+          children: ["Đặt vé thành công!", "Chúc bạn có cuộc chơi vui vẻ"],
           path: "/",
         },
       };
@@ -122,7 +119,7 @@ const ticketBookingReducer = (state = initialState, { type, payload }) => {
             title: "Thông báo",
             children: [
               "Bạn chỉ có thể mua được tối đa 5 ghế.",
-              "Vui lòng liên hệ supports@finnkino.com để được hỗ trợ tốt hơn.",
+              "Vui lòng liên hệ deptrai@fpt.com để được hỗ trợ tốt hơn.",
             ],
             path: "",
           },
