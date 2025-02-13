@@ -31,7 +31,7 @@
     padding: 0;
   }
 
-  &__movie-name {
+  &__event-name {
     margin-bottom: 10px;
     font: {
       weight: 700;
@@ -45,7 +45,7 @@
     }
   }
 
-  &__movie-age-limit-label {
+  &__event-age-limit-label {
     font: {
       size: 11px;
       weight: 700;
@@ -55,7 +55,7 @@
     color: var(--black);
   }
 
-  &__movie-age-limit-content {
+  &__event-age-limit-content {
     font-size: 11px;
     color: var(--primary);
   }

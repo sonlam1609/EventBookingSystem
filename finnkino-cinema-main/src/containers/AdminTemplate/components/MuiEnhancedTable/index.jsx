@@ -1,13 +1,14 @@
+import "./style.scss";
+
 import * as React from "react";
-import { Fragment } from "react";
-import PropTypes from "prop-types";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
 
 // Material UI
 import {
-  alpha,
   Box,
+  FormControlLabel,
+  IconButton,
+  Paper,
+  Switch,
   Table,
   TableBody,
   TableCell,
@@ -17,34 +18,33 @@ import {
   TableRow,
   TableSortLabel,
   Toolbar,
-  Typography,
-  Paper,
-  IconButton,
   Tooltip,
-  FormControlLabel,
-  Switch,
+  Typography,
+  alpha,
 } from "@mui/material";
+import { eventApi, userApi } from "@/api";
+import { fetchEventDelete, fetchUserDelete } from "./constants";
+import { useDispatch, useSelector } from "react-redux";
+
 import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
-import { visuallyHidden } from "@mui/utils";
-
+import { Fragment } from "react";
 // Components
 import Loader from "@/components/Loader";
-import MovieModal from "../../MovieDashBoard/components/MovieModal";
-import ScheduleModal from "../../MovieDashBoard/ScheduleModal";
+import EventModal from "../../EventDashBoard/components/EventModal";
+import PropTypes from "prop-types";
+import ScheduleModal from "../../EventDashBoard/ScheduleModal";
 import UserModal from "../../UserDashBoard/component/UserModal";
-
 //Others
-import { actFetchMovieDelete } from "@/store/actions/movieManagement";
-import { actGetUserDetele } from "@/store/actions/userManagement";
-import actFetchMovieDetails from "@/store/actions/movieDetails";
-import "./style.scss";
-import { actGetUserSearch } from "@/store/actions/userManagement";
-import actGetUserList from "@/store/actions/userList";
-import { useNavigate } from "react-router-dom";
-import { movieApi, userApi } from "@/api";
-import { fetchUserDelete, fetchMovieDelete } from "./constants";
+import { actFetchEventDelete } from "@/store/actions/eventManagement";
+import actFetchEventDetails from "@/store/actions/eventDetails";
 import actGetUserDetails from "@/store/actions/userDetails";
+import { actGetUserDetele } from "@/store/actions/userManagement";
+import actGetUserList from "@/store/actions/userList";
+import { actGetUserSearch } from "@/store/actions/userManagement";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { visuallyHidden } from "@mui/utils";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -96,7 +96,7 @@ function EnhancedTableHead(props) {
                 direction={orderBy === headCell.id ? order : "asc"}
                 onClick={createSortHandler(headCell.id)}
                 sx={{ fontWeight: "600" }}
-                className="movie-table__head-item"
+                className="event-table__head-item"
               >
                 {headCell.label}
                 {orderBy === headCell.id ? (
@@ -181,30 +181,30 @@ function MuiEnhancedTable(props) {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [openModalMovie, setOpenModalMovie] = React.useState(false);
+  const [openModalEvent, setOpenModalEvent] = React.useState(false);
   const [openModalUser, setOpenModalUser] = React.useState(false);
   const [openScheduleModal, setOpenScheduleModal] = React.useState(false);
-  const [movieEdit, setMovieEdit] = React.useState("");
+  const [eventEdit, setEventEdit] = React.useState("");
   const [userEdit, setUserEdit] = React.useState("");
-  const [showTimeMovie, setShowTimeMovie] = React.useState("");
+  const [showTimeEvent, setShowTimeEvent] = React.useState("");
 
   const dispatch = useDispatch();
 
   const rows = dataList ? dataList : [];
-  const movieEditData = useSelector((state) => state.movieDetails.data);
-  const movieLoading = useSelector((state) => state.movieDetails.loading);
+  const eventEditData = useSelector((state) => state.eventDetails.data);
+  const eventLoading = useSelector((state) => state.eventDetails.loading);
   let userEditData = useSelector((state) => state.userDetails.data);
   const userLoading = useSelector((state) => state.userDetails.loading);
 
-  const handleEditMovie = (id) => {
+  const handleEditEvent = (id) => {
     if (tableType === "user") {
       setOpenModalUser(true);
       setUserEdit(id);
       dispatch(actGetUserDetails(id));
     } else {
-      setOpenModalMovie(true);
-      setMovieEdit(id);
-      dispatch(actFetchMovieDetails(id));
+      setOpenModalEvent(true);
+      setEventEdit(id);
+      dispatch(actFetchEventDetails(id));
     }
   };
 
@@ -217,14 +217,14 @@ function MuiEnhancedTable(props) {
         await fetchUserDelete(id);
         window.location.reload();
       } else {
-        await fetchMovieDelete(id);
+        await fetchEventDelete(id);
         window.location.reload();
       }
     }
   };
 
   const handleSchedule = (id) => {
-    setShowTimeMovie(id);
+    setShowTimeEvent(id);
     setOpenScheduleModal(true);
   };
 
@@ -322,8 +322,8 @@ function MuiEnhancedTable(props) {
                               row={row}
                               index={index}
                               labelId={labelId}
-                              handleDeleteMovie={handleDeleteItem}
-                              handleEditMovie={handleEditMovie}
+                              handleDeleteEvent={handleDeleteItem}
+                              handleEditEvent={handleEditEvent}
                               handleSchedule={handleSchedule}
                             />
                           </TableRow>
@@ -356,15 +356,15 @@ function MuiEnhancedTable(props) {
               label="Dense padding"
             />
           </Box>
-          <MovieModal
-            openModalMovie={openModalMovie}
-            setOpenModalMovie={setOpenModalMovie}
+          <EventModal
+            openModalEvent={openModalEvent}
+            setOpenModalEvent={setOpenModalEvent}
             title="Sửa thông tin phim"
             button="Cập nhập"
-            data={movieEditData}
-            loading={movieLoading}
-            modalType="editMovie"
-            movieId={movieEdit}
+            data={eventEditData}
+            loading={eventLoading}
+            modalType="editEvent"
+            eventId={eventEdit}
           />
           <UserModal
             openModalUser={openModalUser}
@@ -377,7 +377,7 @@ function MuiEnhancedTable(props) {
             userAccount={userEdit}
           />
           <ScheduleModal
-            movieId={showTimeMovie}
+            eventId={showTimeEvent}
             openScheduleModal={openScheduleModal}
             setOpenScheduleModal={setOpenScheduleModal}
           />

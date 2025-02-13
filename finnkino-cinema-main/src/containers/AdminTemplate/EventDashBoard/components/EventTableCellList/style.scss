@@ -1,14 +1,4 @@
-.event-table__head-item {
-  color: var(--dark-gray);
-  font-weight: 600;
-  font-size: 16px;
-
-  &.Mui-active {
-    color: var(--primary);
-  }
-}
-
-.event-table__table-cell {
+.management-table__table-cell {
   --width-s: 100px;
   --width-m: 150px;
   --width-l: 200px;
@@ -41,8 +31,8 @@
     text-align: justify;
   }
 
-  &.table-cell__event-actions {
-    width: var(--width-l);
+  &.table-cell__management-actions {
+    width: var(--width-m);
   }
 }
 
@@ -75,7 +65,7 @@
       text-align: justify;
     }
 
-    &.table-cell__event-actions {
+    &.table-cell__management-actions {
       width: calc(var(--width-s) / 2);
     }
   }
@@ -111,7 +101,7 @@
       text-align: justify;
     }
 
-    &.table-cell__event-actions {
+    &.table-cell__management-actions {
       width: var(--width-s);
     }
   }

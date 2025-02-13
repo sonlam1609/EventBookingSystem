@@ -1,32 +1,30 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import PropTypes from "prop-types";
+// Scss
+import "./style.scss";
 
-// Material UI
-import { useTheme } from "@mui/material/styles";
 import {
   Box,
+  IconButton,
+  Paper,
   Table,
   TableBody,
-  TableHead,
   TableCell,
   TableContainer,
   TableFooter,
+  TableHead,
   TablePagination,
   TableRow,
-  Paper,
-  IconButton,
 } from "@mui/material";
 import { FirstPage, KeyboardArrowLeft, KeyboardArrowRight, LastPage } from "@mui/icons-material";
 
-// Format date
-import moment from "moment";
-
 // Constants
 import { ALPHABET } from "@/constants";
-
-// Scss
-import "./style.scss";
+import PropTypes from "prop-types";
+// Format date
+import moment from "moment";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+// Material UI
+import { useTheme } from "@mui/material/styles";
 
 function TablePaginationActions(props) {
   const theme = useTheme();
@@ -87,9 +85,9 @@ TablePaginationActions.propTypes = {
 
 const columns = [
   { id: "ticket-id", label: "Mã vé", align: "center", minWidth: 80 },
-  { id: "movie-name", label: "Tên phim", align: "center", minWidth: 100 },
+  { id: "event-name", label: "Tên phim", align: "center", minWidth: 100 },
   { id: "showtime", label: "Ngày chiếu", align: "center", minWidth: 170 },
-  { id: "movie-duration", label: "Thời lượng", align: "center", minWidth: 120 },
+  { id: "event-duration", label: "Thời lượng", align: "center", minWidth: 120 },
   {
     id: "cinema",
     label: "Rạp",

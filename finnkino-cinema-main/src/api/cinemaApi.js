@@ -7,7 +7,7 @@ const cinemaApi = {
     const url = resourceName + "LayThongTinLichChieuHeThongRap";
     return axiosClient.get(url, { params });
   },
-  getMovieSchedule: (params) => {
+  getEventSchedule: (params) => {
     const url = resourceName + "LayThongTinLichChieuPhim";
     return axiosClient.get(url, { params });
   },

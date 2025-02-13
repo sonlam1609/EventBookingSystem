@@ -1,6 +1,6 @@
 # Finnkino Cinema
 
-A movie ticket booking website built with **ReactJS**, **Redux** and **Material UI**.
+A event ticket booking website built with **ReactJS**, **Redux** and **Material UI**.
 
 See the live demo -> [Finnkino Cinema](https://finnkinocinema.vercel.app "Finnkino Cinema") (the API might be expired when you visit the website).
 
@@ -55,8 +55,8 @@ Fully responsive design on devices (laptop, tablet and mobile).
 
 | Page                            | Features                                                                                                                                                                              |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Home                            | - show theaters, movies and showtime schedules                                                                                                                                        |
-| Movie details                   | - show movie details                                                                                                                                                                  |
+| Home                            | - show theaters, events and showtime schedules                                                                                                                                        |
+| Event details                   | - show event details                                                                                                                                                                  |
 | Authentication (login + signup) | - validate login and signup forms                                                                                                                                                     |
 | Ticket booking                  | - build grid-shaped seat layout with different types of seat<br> - map each seat row in alphabetical order <br> - allow to select a maximum of 5 seats<br> - cannot select sold seats |
 | Profile                         | - allow to change user information<br> - show transaction history                                                                                                                     |
@@ -66,7 +66,7 @@ Fully responsive design on devices (laptop, tablet and mobile).
 | Page             | Features                                                                                                                                                                                                             |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | User management  | - display the table of users (both clients and administrators)<br> - search user by name<br> - create, update and delete user. Validate user information forms.                                                      |
-| Movie management | - display the table of movies<br> - search movie by name<br> - create, update and delete movie. Validate movie information forms<br> - create movie showtime schedules. Validate showtime schedule information forms |
+| Event management | - display the table of events<br> - search event by name<br> - create, update and delete event. Validate event information forms<br> - create event showtime schedules. Validate showtime schedule information forms |
 
 ## Project structure
 
@@ -84,7 +84,7 @@ root
     │   │   ├── index.js            # Admin template
     │   │   ├── components          # Shared components for admin template
     │   │   ├── UserDashBoard
-    │   │   └── MovieDashBoard
+    │   │   └── EventDashBoard
     │   ├── AuthTemplate            # Authentication pages
     │   │   ├── index.js            # Authentication template
     │   │   ├── components          # Shared components for authentication template
@@ -94,7 +94,7 @@ root
     │   │   ├── index.js            # Home template
     │   │   ├── components          # Shared components for home template
     │   │   ├── HomePage
-    │   │   ├── MovieDetailsPage
+    │   │   ├── EventDetailsPage
     │   │   ├── ProfilePage
     │   │   └── TicketBookingPage
     │   └── NotFoundPage            # 404 not found page
@@ -148,7 +148,7 @@ Open http://localhost:3000 with your favorite browser to see the project 😎.
 
 ![finnkino user management laptop](src/assets/docs-images/finnkino-user-management-laptop.png)
 
-![finnkino user management laptop](src/assets/docs-images/finnkino-movie-management-laptop.png)
+![finnkino user management laptop](src/assets/docs-images/finnkino-event-management-laptop.png)
 
 - On Mobile
 
@@ -167,9 +167,9 @@ Thanks go to these wonderful people ✨
 <table>
   <tr>
     <!-- Phuong Vu -->
-    <td align="center"><a href="https://github.com/phuongvu0804"><img src="https://avatars.githubusercontent.com/u/99994868?v=4" width="85px;" alt=""/><br /><sub><b>Phuong Vu (Chloe)</b></sub></a><br /><a href="https://github.com/scoobytux/movielab/commits?author=phuongvu0804" title="Code">💻</a><a href="https://github.com/scoobytux/movielab/commits?author=phuongvu0804" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/phuongvu0804"><img src="https://avatars.githubusercontent.com/u/99994868?v=4" width="85px;" alt=""/><br /><sub><b>Phuong Vu (Chloe)</b></sub></a><br /><a href="https://github.com/scoobytux/eventlab/commits?author=phuongvu0804" title="Code">💻</a><a href="https://github.com/scoobytux/eventlab/commits?author=phuongvu0804" title="Documentation">📖</a></td>
     <!-- Tu Le -->
-    <td align="center"><a href="https://github.com/scoobytux"><img src="https://avatars.githubusercontent.com/u/72339711?v=4" width="85px;" alt=""/><br /><sub><b>Tu Le (Liam)</b></sub></a><br /><a href="https://github.com/scoobytux/movielab/commits?author=scoobytux" title="Code">💻</a><a href="https://github.com/scoobytux/movielab/commits?author=scoobytux" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/scoobytux"><img src="https://avatars.githubusercontent.com/u/72339711?v=4" width="85px;" alt=""/><br /><sub><b>Tu Le (Liam)</b></sub></a><br /><a href="https://github.com/scoobytux/eventlab/commits?author=scoobytux" title="Code">💻</a><a href="https://github.com/scoobytux/eventlab/commits?author=scoobytux" title="Documentation">📖</a></td>
   </tr>
 </table>
 <!-- markdownlint-restore -->
@@ -182,7 +182,7 @@ Thanks go to these wonderful people ✨
 | Resource                       | Description                                                                     |
 | ------------------------------ | ------------------------------------------------------------------------------- |
 | [CyberSoft Academy][cybersoft] | API provider                                                                    |
-| [Finnkino][finnkino]           | A cool Finnish website for booking online movie tickets we got inspiration from |
+| [Finnkino][finnkino]           | A cool Finnish website for booking online event tickets we got inspiration from |
 
 [cybersoft]: https://cybersoft.edu.vn/
 [finnkino]: https://www.finnkino.fi/en/

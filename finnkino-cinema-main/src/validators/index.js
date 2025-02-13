@@ -1,16 +1,17 @@
+import { addEventSchema, editEventSchema } from "./eventValidator";
+
+import accountInfoSchema from "./accountInfoValidator";
+import eventScheduleSchema from "./eventScheduleValidator";
 import loginSchema from "./login";
 import registerSchema from "./register";
-import accountInfoSchema from "./accountInfoValidator";
-import { editMovieSchema, addMovieSchema } from "./movieValidator";
 import userSchema from "./userValidator";
-import movieScheduleSchema from "./movieScheduleValidator";
 
 export {
-  loginSchema,
+loginSchema,
   registerSchema,
-  editMovieSchema,
-  addMovieSchema,
+  editEventSchema,
+  addEventSchema,
   userSchema,
   accountInfoSchema,
-  movieScheduleSchema,
+  eventScheduleSchema,
 };

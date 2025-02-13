@@ -1,22 +1,19 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Slider from "react-slick";
-
-//FontAwesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle } from "@fortawesome/free-solid-svg-icons";
-
 // React Slick config
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "./style.scss";
 
-import actFetchBanners from "@/store/actions/movieBanner";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
+//FontAwesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // Components
 import Image from "@/components/Image";
 import Loader from "@/components/Loader";
-
-import "./style.scss";
+import Slider from "react-slick";
+import actFetchBanners from "@/store/actions/eventBanner";
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -30,8 +27,8 @@ function SamplePrevArrow(props) {
 
 function Carousel() {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.movieBanner.data);
-  const loading = useSelector((state) => state.movieBanner.loading);
+  const data = useSelector((state) => state.eventBanner.data);
+  const loading = useSelector((state) => state.eventBanner.loading);
 
   useEffect(() => {
     // dispatch(actFetchBanners());
