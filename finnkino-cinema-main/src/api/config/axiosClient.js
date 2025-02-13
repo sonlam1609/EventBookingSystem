@@ -1,5 +1,4 @@
 import axios from "axios";
-import apiConfig from "./apiConfig";
 
 const axiosClient = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
@@ -7,8 +6,6 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use(
   (config) => {
-    config.headers.TokenCybersoft = apiConfig.authToken;
-
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
       config.headers.Authorization = `Bearer ${user?.token}`;
@@ -21,8 +18,13 @@ axiosClient.interceptors.request.use(
 
 axiosClient.interceptors.response.use(
   (response) => response?.data,
-
-  (error) => Promise.reject(error.response.data.content),
+  (error) => {
+    if (error.response?.status === 401) {
+      localStorage.removeItem("user");
+      window.location.href = "/auth/login";
+    }
+    Promise.reject(error.response.data);
+  },
 );
 
 export default axiosClient;

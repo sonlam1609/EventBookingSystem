@@ -47,7 +47,7 @@ const userProfileReducer = (state = initialState, { type, payload }) => {
         modal: {
           ...state.modal,
           open: true,
-          children: ["Cập nhật thông tin tài khoản không thành công!"],
+          children: [payload.message],
         },
       };
 
