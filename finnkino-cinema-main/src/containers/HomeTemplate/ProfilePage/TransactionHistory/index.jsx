@@ -89,8 +89,8 @@ const columns = [
   { id: "showtime", label: "Ngày chiếu", align: "center", minWidth: 170 },
   // { id: "movie-duration", label: "Thời lượng", align: "center", minWidth: 120 },
   {
-    id: "cinema",
-    label: "Rạp",
+    id: "venue",
+    label: "Địa chỉ",
     align: "center",
     minWidth: 100,
   },
