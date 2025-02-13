@@ -87,7 +87,7 @@ const columns = [
   { id: "ticket-id", label: "Mã vé", align: "center", minWidth: 80 },
   { id: "event-name", label: "Tên phim", align: "center", minWidth: 100 },
   { id: "showtime", label: "Ngày chiếu", align: "center", minWidth: 170 },
-  { id: "event-duration", label: "Thời lượng", align: "center", minWidth: 120 },
+  // { id: "movie-duration", label: "Thời lượng", align: "center", minWidth: 120 },
   {
     id: "cinema",
     label: "Rạp",
@@ -108,7 +108,7 @@ const TransactionHistory = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const rows = content?.thongTinDatVe;
+  const rows = content?.bookings;
 
   const handleChangePage = (event, newPage) => setPage(newPage);
 
@@ -122,15 +122,18 @@ const TransactionHistory = () => {
       ? rows?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
       : rows
     )?.map((row) => {
-      let seats = row?.danhSachGhe;
+      let seats = row?.tickets;
       const { tenCumRap, tenHeThongRap } = seats[0];
 
       seats = seats.map((seat, idx) => {
+        console.log(seat);
         // Number of seat rows in ticket booking page
-        const nRow = 16;
-        const seatIndicator = ALPHABET[Math.floor((+seat.tenGhe - 1) / nRow)];
-        const seatIdx = ((+seat.tenGhe - 1) % nRow) + 1;
-        const seatCode = seatIndicator + seatIdx;
+        // const nRow = 16;
+        // const seatIndicator = ALPHABET[Math.floor((+seat.tenGhe - 1) / nRow)];
+        // const seatIdx = ((+seat.tenGhe - 1) % nRow) + 1;
+        // const seatCode = seatIndicator + seatIdx;
+
+        const seatCode = seat.row + seat.number;
 
         const isLastSeat = idx === seats.length - 1;
 
@@ -143,17 +146,17 @@ const TransactionHistory = () => {
       });
 
       return (
-        <TableRow key={row.ngayDat}>
-          <TableCell align="center">{row?.maVe}</TableCell>
-          <TableCell align="center">{row?.tenPhim}</TableCell>
+        <TableRow key={row.bookedAt}>
+          <TableCell align="center">{row?.bookingId}</TableCell>
+          <TableCell align="center">{row?.eventName}</TableCell>
           <TableCell align="center">
-            {moment(row?.ngayDat).format("HH:mm")}, {moment(row?.ngayDat).format("DD/MM/YYY")}
+            {row?.eventTime.substring(0, 5)}, {moment(row?.eventDate).format("DD/MM/YYYY")}
           </TableCell>
-          <TableCell align="center">{row.thoiLuongPhim} phút</TableCell>
-          <TableCell align="center">
+          <TableCell align="center">{row.venue}</TableCell>
+          {/* <TableCell align="center">
             {tenHeThongRap}, {tenCumRap}
-          </TableCell>
-          <TableCell align="center">{row.giaVe.toLocaleString()} VNĐ</TableCell>
+          </TableCell> */}
+          <TableCell align="center">{row.totalAmount.toLocaleString()} VNĐ</TableCell>
           <TableCell align="center">{seats}</TableCell>
         </TableRow>
       );

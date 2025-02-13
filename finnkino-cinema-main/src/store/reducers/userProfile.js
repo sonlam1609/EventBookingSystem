@@ -6,9 +6,7 @@ const initialState = {
   modal: {
     open: false,
     title: "Thông báo",
-    children: [
-      "Cập nhật thông tin tài khoản thành công!",
-    ],
+    children: ["Cập nhật thông tin tài khoản thành công!"],
     buttonContent: "Chấp nhận",
     path: "",
   },
@@ -46,7 +44,11 @@ const userProfileReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         update: { loading: false, error: payload },
-        modal: { ...state.modal, open: true},
+        modal: {
+          ...state.modal,
+          open: true,
+          children: ["Cập nhật thông tin tài khoản không thành công!"],
+        },
       };
 
     case actType.UPDATE_USER_PROFILE_SUCCESS:
@@ -63,7 +65,7 @@ const userProfileReducer = (state = initialState, { type, payload }) => {
           error: "",
         },
         update: { loading: false, error: "" },
-        modal: { ...state.modal, open: true,  },
+        modal: { ...state.modal, open: true },
       };
 
     // Close modal
